@@ -3,7 +3,18 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import Input from "./Input";
 
-const SearchStyled = styled.div``;
+const SearchStyled = styled.div`
+  display: flex;
+  position: relative;
+  .close {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
+  }
+`;
 
 export default function Search() {
   const [inputValue, setInputValue] = useState(""); // to filter by name
@@ -31,7 +42,7 @@ export default function Search() {
         value={inputValue}
         onChange={filterByName}
       />
-      {inputValue && <button onClick={clearInput}>X</button>}
+      {inputValue && <i class="fas fa-times close" onClick={clearInput}></i>}
     </SearchStyled>
   );
 }

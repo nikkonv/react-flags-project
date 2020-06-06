@@ -5,6 +5,7 @@ import "./App.css";
 import CountryList from "./CountryList";
 import reducer from "./reducer";
 import ActionList from "./ActionsList";
+import Header from "./Header";
 
 const initialState = {
   countryList: [],
@@ -19,7 +20,8 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <i class="far fa-moon"></i>
+        <Header />
+
         <ActionList />
         <CountryList />
       </div>
