@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import Country from "./Country";
@@ -14,7 +14,19 @@ const CountryListStyled = styled.div`
 
 export default function CountryList() {
   const dispatch = useDispatch();
-  const countryList = useSelector((state) => state.countryList);
+
+  const countryListByName = useSelector((state) => state.countryListByName);
+
+  const countryList = useSelector((state) => {
+    if (state.filterByRegion !== "" && countryListByName.length === 0) {
+      return state.coutryFilteredByRegion;
+    }
+    if (countryListByName.length > 0) {
+      return countryListByName;
+    }
+
+    return state.countryList;
+  });
 
   // hook para consumir una api
   useEffect(() => {
@@ -33,6 +45,7 @@ export default function CountryList() {
         console.log("error");
       });
   }, [dispatch]);
+
   return (
     <CountryListStyled>
       {countryList.map(({ name, flag, population, region, capital }) => {
