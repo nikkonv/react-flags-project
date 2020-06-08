@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import slugify from "slugify";
 
 const CountryStyled = styled.div`
   cursor: pointer;
@@ -39,10 +40,18 @@ const CountryStyled = styled.div`
   }
 `;
 
-export default function Country({ flag, name, population, region, capital }) {
+export default function Country({
+  flag,
+  name,
+  population,
+  region,
+  capital,
+  cioc,
+}) {
   const history = useHistory();
   function handleClick() {
-    history.push(`/country/${name}`);
+    const id = cioc || name;
+    history.push(`/country/${slugify(id)}`);
   }
   return (
     <CountryStyled onClick={handleClick}>

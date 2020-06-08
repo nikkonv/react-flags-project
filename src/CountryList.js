@@ -52,18 +52,21 @@ export default function CountryList() {
   return (
     <Wrapper>
       <CountryListStyled>
-        {countryList.map(({ name, flag, population, region, capital }) => {
-          return (
-            <Country
-              key={name}
-              flag={flag}
-              name={name}
-              population={population}
-              region={region}
-              capital={capital}
-            />
-          );
-        })}
+        {countryList.map(
+          ({ name, flag, population, region, capital, cioc }) => {
+            return (
+              <Country
+                key={name}
+                flag={flag}
+                name={name}
+                population={population}
+                region={region}
+                capital={capital}
+                cioc={cioc}
+              />
+            );
+          }
+        )}
       </CountryListStyled>
     </Wrapper>
   );

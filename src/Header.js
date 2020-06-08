@@ -58,9 +58,9 @@ export default function Header({ setDarkMode, darkMode }) {
             <p onClick={handleClick}>
               <span className="moon">
                 {darkMode ? (
-                  <i class="fas fa-moon"></i>
+                  <i className="fas fa-moon"></i>
                 ) : (
-                  <i class="far fa-moon"></i>
+                  <i className="far fa-moon"></i>
                 )}
               </span>
               Dark Mode

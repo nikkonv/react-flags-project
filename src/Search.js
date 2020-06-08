@@ -42,7 +42,9 @@ export default function Search() {
         value={inputValue}
         onChange={filterByName}
       />
-      {inputValue && <i class="fas fa-times close" onClick={clearInput}></i>}
+      {inputValue && (
+        <i className="fas fa-times close" onClick={clearInput}></i>
+      )}
     </SearchStyled>
   );
 }

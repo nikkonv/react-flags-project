@@ -31,7 +31,7 @@ const InputStyled = styled.label`
 export default function Input({ ...props }) {
   return (
     <InputStyled>
-      <i class="fas fa-search"></i>
+      <i className="fas fa-search"></i>
       <input type="text" {...props} />
     </InputStyled>
   );
