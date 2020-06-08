@@ -16,7 +16,12 @@ const HeaderStyled = styled.div`
   h1 {
     font-size: 14px;
   }
+  a {
+    text-decoration: none;
+    color: var(--black);
+  }
   .dark-mode {
+    cursor: pointer;
     .moon {
       margin-right: 10px;
       transform: rotate(-30deg);
@@ -27,10 +32,21 @@ const HeaderStyled = styled.div`
       font-weight: 600;
     }
   }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 3em;
+    h1 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
 `;
 
-export default function Header() {
-  function handleClick() {}
+export default function Header({ setDarkMode, darkMode }) {
+  function handleClick() {
+    setDarkMode(!darkMode);
+  }
   return (
     <HeaderStyled>
       <Wrapper>
@@ -41,8 +57,11 @@ export default function Header() {
           <div className="dark-mode">
             <p onClick={handleClick}>
               <span className="moon">
-                <i class="far fa-moon"></i>
-                {/* <i class="fas fa-moon"></i> */}
+                {darkMode ? (
+                  <i class="fas fa-moon"></i>
+                ) : (
+                  <i class="far fa-moon"></i>
+                )}
               </span>
               Dark Mode
             </p>
